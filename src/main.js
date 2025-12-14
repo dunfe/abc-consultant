@@ -1,7 +1,7 @@
 import './style.css'
 
 // Function to show popup
-window.showPopup = function() {
+function showPopup() {
   const popup = document.getElementById('popup');
   const overlay = document.getElementById('overlay');
   popup.classList.add('active');
@@ -9,7 +9,7 @@ window.showPopup = function() {
 }
 
 // Function to close popup
-window.closePopup = function() {
+function closePopup() {
   const popup = document.getElementById('popup');
   const overlay = document.getElementById('overlay');
   popup.classList.remove('active');
@@ -19,6 +19,8 @@ window.closePopup = function() {
 // Handle recommendation form submission
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('recommendation-form');
+  const closeButton = document.getElementById('close-popup-btn');
+  const overlay = document.getElementById('overlay');
   
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -45,6 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
     showPopup();
   });
   
+  // Close popup when clicking close button
+  closeButton.addEventListener('click', closePopup);
+  
   // Close popup when clicking overlay
-  document.getElementById('overlay').addEventListener('click', closePopup);
+  overlay.addEventListener('click', closePopup);
 });
